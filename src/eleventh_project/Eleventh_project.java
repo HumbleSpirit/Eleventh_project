@@ -61,6 +61,80 @@ class Car2
             
         }
     }
+class Garage
+{
+    private Car cars[];
+    private int count;
+    Garage()
+    {
+        this.cars = new Car[2];
+        this.count = 0;
+    }
+    void Add(Car car)
+    {
+        if (count == cars.length)
+        {
+            Car tempCars[] = new Car[cars.length + 2];
+            for (int i = 0; i < cars.length; i++)
+            {
+                tempCars[i] = cars[i];
+            }
+            cars = tempCars;
+        }
+        cars[count] = car;
+        count++;
+    }
+    void Del()
+    {
+        if (count > 0)
+        {
+            count--;
+            cars[count] = null;
+        }
+    }   
+    void Blast()
+        {
+            cars = null;
+        }
+    void Print()
+    {
+        for (int i = 0; i < count; i++)
+        {
+            System.out.println(cars[i].name + " " +cars[i].maxSpeed);
+        }
+    }
+    void Print2()
+    {
+        for (int i = 0; i < cars.length; i++) 
+        {
+            if(cars[i] != null)
+            {
+                System.out.println(cars[i].name + " " +cars[i].maxSpeed);
+            }
+            else if(cars[i] == null )
+            {
+                System.out.println("No cars");
+            }
+            
+        }
+    }
+    public void setCount(int cnt)
+        {
+            if (cnt < 0)
+            {
+                count = 0;
+            }
+            else
+            {
+                count = cnt;
+            }
+        }
+        public int getCount()
+        {
+            return count;
+            
+        }
+}
 
 public class Eleventh_project {
 
@@ -83,11 +157,26 @@ public class Eleventh_project {
         Car car2 = new Car(50, "McLaren");
         car1.Print();
         car2.Print();*/
-       // Fact(5);
+       /* System.out.println(Fact(6));
         Car2 car4 = new Car2();
-        car4.setSpeed(-5);
-        System.out.println(car4.getSpeed());
-        
+        car4.setSpeed(5);
+        System.out.println(car4.getSpeed());*/
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        Car car4 = new Car(50, "lada");
+        Garage garage = new Garage();
+        garage.Add(car1);
+        garage.Add(new Car());
+        garage.Add(car3);
+        garage.Add(car4);
+        garage.Print();
+        //garage.Print2();
+       //garage.Del();
+       // garage.Print();
+        garage.Blast();
+        //garage.Print();
+        garage.Print2();
     }
     
 }
